@@ -58,7 +58,7 @@ public class WorkerThread extends Thread implements ActionListener{
 						if(phase1Timer.isRunning()){
 							phase1Timer.stop();
 							if(phase2Timer == null){
-								phase2Timer = new Timer(TimeToMilli(4,0), this);
+								phase2Timer = new Timer(TimeToMilli(3,30), this);
 								phase2Timer.setActionCommand("nextPhase");
 								phase2Timer.start();
 							}else{
@@ -91,7 +91,7 @@ public class WorkerThread extends Thread implements ActionListener{
 						//Turn on Progression mode
 						CheckProgressOn();
 						//Initial clicking to get enough gold to buy a hero
-						robert.mouseMove(1382, 600);
+						robert.mouseMove(1044, 632);
 						AutoClick(55,4);
 
 						BuyTreeleaf();
@@ -137,7 +137,6 @@ public class WorkerThread extends Thread implements ActionListener{
 						BuyTreeBeastIVanBrittany();
 					}
 					else if(phase == 5){
-						MassLevelUp();
 						AscendTheWorld();
 						phase = 0;
 						
