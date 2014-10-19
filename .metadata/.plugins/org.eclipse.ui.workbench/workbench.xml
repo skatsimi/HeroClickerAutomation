@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="17" version="2.0">
+<workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="0" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -34,14 +34,30 @@
 </presentation>
 </folder>
 </info>
+<info part="org.eclipse.ui.internal.EditorStack@51724307" ratio="0.57645464" ratioLeft="852" ratioRight="626" relationship="2" relative="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
 </editorArea>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BotThread.java" partName="BotThread.java" path="/home/skatsi/repositories/HeroClickerAutomation/HeroClicker/src/ClickerHeroes/BotThread.java" title="BotThread.java" tooltip="HeroClicker/src/ClickerHeroes/BotThread.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/HeroClicker/src/ClickerHeroes/BotThread.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6749" selectionTopPixel="3921"/>
+</editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GUI.java" partName="GUI.java" path="/home/skatsi/repositories/HeroClickerAutomation/HeroClicker/src/ClickerHeroes/GUI.java" title="GUI.java" tooltip="HeroClicker/src/ClickerHeroes/GUI.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/HeroClicker/src/ClickerHeroes/GUI.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="739" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3062" selectionTopPixel="1527"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WorkerThread.java" partName="WorkerThread.java" path="/home/skatsi/repositories/HeroClickerAutomation/HeroClicker/src/ClickerHeroes/WorkerThread.java" title="WorkerThread.java" tooltip="HeroClicker/src/ClickerHeroes/WorkerThread.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/HeroClicker/src/ClickerHeroes/WorkerThread.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3278" selectionTopPixel="1406"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BotThread.java" partName="BotThread.java" path="/home/skatsi/workspace/worker/src/bot/BotThread.java" title="BotThread.java" tooltip="worker/src/bot/BotThread.java" workbook="org.eclipse.ui.internal.EditorStack@51724307">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/worker/src/bot/BotThread.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="167" selectionOffset="655" selectionTopPixel="0"/>
+</editor>
+<editor focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GUI.java" partName="GUI.java" path="/home/skatsi/workspace/worker/src/gui/GUI.java" title="GUI.java" tooltip="worker/src/gui/GUI.java" workbook="org.eclipse.ui.internal.EditorStack@51724307">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/worker/src/gui/GUI.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2603" selectionTopPixel="1119"/>
 </editor>
 </editors>
 <views>
@@ -51,7 +67,9 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (100 of 112 items)"/>
+<category IMemento.internal.id="Warnings (100 of 224 items)"/>
+<category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="725" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -147,45 +165,32 @@
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="topLeft">
-<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@a7969a0" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@a7969a0" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottomRight" ratio="0.6599064" ratioLeft="423" ratioRight="218" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<info folder="true" part="bottomRight" ratio="0.6599064" ratioLeft="423" ratioRight="218" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.team.ui.GenericHistoryView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomLeft" ratio="0.49921995" ratioLeft="320" ratioRight="321" relationship="4" relative="topLeft">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="bottomLeft" ratio="0.49921995" ratioLeft="320" ratioRight="321" relationship="4" relative="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -271,8 +276,8 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="478" ratioRight="1434" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.75" ratioLeft="693" ratioRight="231" relationship="4" relative="org.eclipse.ui.editorss">
+<info part="org.eclipse.ui.editorss" ratio="0.11023622" ratioLeft="210" ratioRight="1695" relationship="2" relative="left"/>
+<info folder="true" part="bottom" ratio="0.798722" ratioLeft="750" ratioRight="189" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -289,7 +294,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="right" ratio="0.7496513" ratioLeft="1075" ratioRight="359" relationship="2" relative="org.eclipse.ui.editorss">
+<info folder="true" part="right" ratio="0.86704475" ratioLeft="1376" ratioRight="211" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ui.texteditor.TemplatesView" label="LabelNotFound"/>
@@ -306,85 +311,160 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Hero_Clicker_Automation/src/ClickerHeroes/Klickker.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Hero_Clicker_Automation/src/ClickerHeroes/WorkerThread.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Hero_Clicker_Automation/src/ClickerHeroes/GUI.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/HeroClicker/src/GUI.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/HeroClicker/src/WorkerThread.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/HeroClicker/src/ClickerHeroes/WorkerThread.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/HeroClicker/src/ClickerHeroes/GUI.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/worker/src/bot/BotThread.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/HeroClicker/src/ClickerHeroes/BotThread.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/worker/src/gui/GUI.java"/>
 </editors>
-<item historyLabel="Klickker.java" index="0">
-<position info="not_deleted" x="683" y="0"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25825" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="1">
-<position info="not_deleted" x="354" y="0"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25913" y="0"/>
 </item>
-<item historyLabel="Klickker.java" index="0">
-<position info="not_deleted" x="683" y="0"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="6964" y="8"/>
 </item>
-<item historyLabel="GUI.java" index="2">
-<position info="not_deleted" x="1574" y="0"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="6653" y="0"/>
 </item>
-<item historyLabel="GUI.java" index="2">
-<position info="not_deleted" x="1052" y="0"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="6680" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="1">
-<position info="not_deleted" x="647" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="1558" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="6680" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25763" y="12"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25838" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="8219" y="0"/>
+</item>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="1558" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="8219" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25763" y="12"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25911" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25910" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1758" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="1">
+<position info="not_deleted" x="655" y="167"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1963" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1899" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1900" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25763" y="12"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="25947" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1622" y="0"/>
+</item>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="1558" y="0"/>
+</item>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="2604" y="0"/>
 </item>
 <item historyLabel="GUI.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="647" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="2604" y="0"/>
 </item>
 <item historyLabel="GUI.java" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<position info="not_deleted" x="2652" y="252"/>
 </item>
-<item historyLabel="GUI.java" index="6">
-<position info="not_deleted" x="739" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="3106" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="647" y="0"/>
+<item historyLabel="GUI.java" index="3">
+<position info="not_deleted" x="2581" y="347"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="1020" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="3106" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="1079" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="692" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="4551" y="15"/>
+<item historyLabel="GUI.java" index="3">
+<position info="not_deleted" x="2603" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="4599" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="516" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="3950" y="10"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="2366" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="4769" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="2316" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="4852" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="1384" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="7578" y="0"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1622" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="15898" y="0"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1755" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="16379" y="0"/>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="827" y="0"/>
 </item>
-<item historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="6720" y="24"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1755" y="0"/>
 </item>
-<item active="true" historyLabel="WorkerThread.java" index="5">
-<position info="not_deleted" x="3818" y="0"/>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1950" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1952" y="1"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1959" y="0"/>
+</item>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="827" y="0"/>
+</item>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="2036" y="0"/>
+</item>
+<item historyLabel="GUI.java" index="0">
+<position info="not_deleted" x="3062" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="1959" y="0"/>
+</item>
+<item historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="7460" y="0"/>
+</item>
+<item active="true" historyLabel="BotThread.java" index="2">
+<position info="not_deleted" x="6767" y="10"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -403,6 +483,33 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GUI.java" tooltip="worker/src/gui/GUI.java">
+<persistable path="/worker/src/gui/GUI.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BotThread.java" tooltip="HeroClicker/src/ClickerHeroes/BotThread.java">
+<persistable path="/HeroClicker/src/ClickerHeroes/BotThread.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BotThread.java" tooltip="worker/src/bot/BotThread.java">
+<persistable path="/worker/src/bot/BotThread.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GUI.java" tooltip="HeroClicker/src/ClickerHeroes/GUI.java">
+<persistable path="/HeroClicker/src/ClickerHeroes/GUI.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BotThread.java" tooltip="HeroClicker/src/botThread/BotThread.java">
+<persistable path="/HeroClicker/src/botThread/BotThread.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WorkerThread.java" tooltip="HeroClicker/src/ClickerHeroes/WorkerThread.java">
+<persistable path="/HeroClicker/src/ClickerHeroes/WorkerThread.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GUI.java" tooltip="Copy of HeroClicker/src/ClickerHeroes/GUI.java">
+<persistable path="/Copy of HeroClicker/src/ClickerHeroes/GUI.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GUIThread.java" tooltip="Copy of HeroClicker/src/ClickerHeroes/GUIThread.java">
+<persistable path="/Copy of HeroClicker/src/ClickerHeroes/GUIThread.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WorkerThread.java" tooltip="Copy of HeroClicker/src/ClickerHeroes/WorkerThread.java">
+<persistable path="/Copy of HeroClicker/src/ClickerHeroes/WorkerThread.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WorkerThread.java" tooltip="HeroClicker/src/WorkerThread.java">
 <persistable path="/HeroClicker/src/WorkerThread.java"/>
 </file>
