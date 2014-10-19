@@ -1,28 +1,19 @@
 package ClickerHeroes;
 
 import java.awt.AWTException;
-import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.MouseInfo;
-import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
-import javax.swing.ActionMap;
-import javax.swing.GroupLayout;
-import javax.swing.InputMap;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.JProgressBar;
 
 
 
@@ -38,7 +29,11 @@ public class GUI extends JFrame{
 	private JLabel totalTimeLabel;
 	private JLabel currentTimeLabel;
 	private JLabel phaseLabel;
+	private JLabel phaseInfoLabel;
 	private JLabel worldLabel;
+	private JProgressBar phaseProgressBar;
+	private JProgressBar worldProgressBar;
+	private static GUI klikk;
 	
 	
 	public GUI() throws AWTException {
@@ -52,7 +47,6 @@ public class GUI extends JFrame{
 			EventQueue.invokeLater(new Runnable() {
 				@Override
 				public void run() {
-					GUI klikk;
 					try {
 						klikk = new GUI();
 						klikk.setVisible(true);
@@ -63,24 +57,25 @@ public class GUI extends JFrame{
 	}
 	private void initGUI()
 	{
-
 		Container  pane = getContentPane();
-		FlowLayout gl = new FlowLayout();
-		pane.setLayout(gl);
+		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
-		final JButton clickButton = new JButton("Start clicking");
+		final JButton clickButton = new JButton("Start");
 		clickButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
             	if(runClicks == false){
             		runClicks = true;
-            		newBot();
-            		clickButton.setText("Stop clicking");     	
+            		try {
+						newBot();
+					} catch (AWTException e) {e.printStackTrace();}
+            		clickButton.setText("Cancel");     	
 						clickButton.requestFocus();
             	}
             	else{
-            		clickButton.setText("Start clicking");
-            		runClicks = false;			
+            		clickButton.setText("Start");
+            		runClicks = false;
+            		cancelBot();
             	}
             }
         });
@@ -88,20 +83,28 @@ public class GUI extends JFrame{
 		currentTimeLabel = new JLabel("current time");
 		totalTimeLabel = new JLabel("total time");
 		phaseLabel = new JLabel("Phase");
+		phaseInfoLabel = new JLabel("phaseInfo");
 		worldLabel = new JLabel("World");
+		phaseProgressBar = new JProgressBar();
+		worldProgressBar = new JProgressBar();
 		
-		//gl.setAutoCreateContainerGaps(true);
-		//gl.setHorizontalGroup(gl.createSequentialGroup().addComponent(clickButton));
-		//gl.setVerticalGroup(gl.createSequentialGroup().addComponent(clickButton));
-		pane.add(clickButton);
-		pane.add(currentTimeLabel);
-		pane.add(phaseLabel);
 		pane.add(totalTimeLabel);
 		pane.add(worldLabel);
+		pane.add(currentTimeLabel);
+		pane.add(worldProgressBar);
+		worldProgressBar.setMaximumSize(new Dimension(100,15));
+		worldProgressBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+		pane.add(phaseLabel);
+		pane.add(phaseProgressBar);
+		phaseProgressBar.setMaximumSize(new Dimension(100,15));
+		phaseProgressBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+		pane.add(phaseInfoLabel);
+		pane.add(clickButton);
+	
 		pack();
 		
 		setTitle("Hero Clicker Automaton");
-		setSize(150,75);
+		setSize(400,130);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setAlwaysOnTop(true);
@@ -110,30 +113,43 @@ public class GUI extends JFrame{
 		
 	}
 	
-	public void newBot(){
+	public void newBot() throws AWTException{
 		if(bot == null){
 			bot = new BotThread();
 			bot.addPropertyChangeListener( new PropertyChangeListener(){
 					public void propertyChange(PropertyChangeEvent evt){
 
 						 if(evt.getPropertyName().equals("timeSpentTotal")){
-							totalTimeLabel.setText("Time spent: " + evt.getNewValue().toString());
+							totalTimeLabel.setText("Running time: " + evt.getNewValue().toString());
 						}
 						 else if(evt.getPropertyName().equals("timeSpentCurrent")){
-							currentTimeLabel.setText("Time spent in this world: "+ evt.getNewValue().toString());
+							currentTimeLabel.setText("Current world time: "+ evt.getNewValue().toString());
 						}
 						else if(evt.getPropertyName().equals("phase")){
 							phaseLabel.setText("Phase: " + evt.getNewValue() + " / " + evt.getOldValue());
 						}
-						else if(evt.getPropertyName().equals("world_nr")){
-							worldLabel.setText("Current World: " + evt.getNewValue());
+						else if(evt.getPropertyName().equals("phaseInfo")){
+							phaseInfoLabel.setText(evt.getNewValue().toString());
 						}
-						
+						else if(evt.getPropertyName().equals("phaseProgress")){
+							phaseProgressBar.setValue((int) evt.getNewValue());
+						}
+						else if(evt.getPropertyName().equals("world")){
+							worldLabel.setText("Current World: " + evt.getNewValue().toString());
+						}
+						 worldProgressBar.setValue(bot.getProgress());
 					}
 			});
+			bot.execute();
 		}
-		bot.execute();
+		else{
+			bot.startBot();
+		}
 	}
 	
-
+	public void cancelBot(){
+		if(bot != null){
+			bot.cancelBot();
+		}
+	}
 }

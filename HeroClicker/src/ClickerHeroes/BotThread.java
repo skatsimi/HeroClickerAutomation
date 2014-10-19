@@ -2,8 +2,6 @@ package ClickerHeroes;
 
 import java.awt.AWTException;
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.MouseInfo;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,12 +16,18 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 
 	//TODO: remove runClicks(replaced by inherited isCanceled)
 	static Boolean runClicks;
+	private boolean isStopped;
 	private int phase;
+	private int phaseProgress;
+	private String phaseInfo;
 	private int world_nr;
 	private int nr_of_phases;
 	private Timer performActionTimer;
 	private Timer ProgressCheckTimer;
+	private int phase1Length;
+	private int phase2Length;
 	//TODO: combine all phase timers into 1 single timer
+	private Timer phaseTimer;
 	private Timer phase1Timer;
 	private Timer phase2Timer;
 	private Timer phase4Timer;
@@ -34,41 +38,44 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 	private Timer sleepTimer;
 	Robot robert;
 	//keeping track of time spent
-	private long startTime;
+	private long startTimeTotal;
+	private long startTimeThisWorld;
+	
 	public BotThread(){
 		super();
-
-		runClicks = true;
-		phase = 99;
-		world_nr = 1;
-		nr_of_phases = 9;
-		//Start Timers that will fire no matter which phase we are in.
-		performActionTimer = new Timer(500, this);	
-		performActionTimer.setActionCommand("doAction");
-		performActionTimer.start();
-		ProgressCheckTimer = new Timer(TimeToMilli(2,30), this);
-		ProgressCheckTimer.setActionCommand("checkProgress");
-		ProgressCheckTimer.start();	
+		
 		try {
-			robert = new Robot();
+			startBot();
 		} catch (AWTException e) {e.printStackTrace();}
-		startTime = System.currentTimeMillis();
+		
 	}
 	
 	@Override
 	protected Integer doInBackground() throws Exception {
 		while(!isCancelled()){
 			//keep going until we get cancelled
-			publish();
+			if(!isStopped){
+				publish();
+			}
 		
 		}
 		return null;
 	}
+
+	protected void done(){
+		
+	}
 	@Override
 	 protected void process(List<Integer> chunks) {
 		
-		this.firePropertyChange("timeSpentCurrent", 0, getTimeSpent());
+		updateProgress();
+		this.firePropertyChange("timeSpentTotal", 0, getTimeSpentTotal());
+		this.firePropertyChange("timeSpentCurrent", 0, getTimeSpentCurrent());
 		this.firePropertyChange("phase", nr_of_phases, phase);
+		this.firePropertyChange("phaseInfo", 1, phaseInfo);
+		this.firePropertyChange("world", 1, Integer.toString(world_nr));
+		this.firePropertyChange("phaseProgress", 1 , phaseProgress);
+		
   }
 
 	@Override
@@ -78,7 +85,7 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 				if(eventArg.getActionCommand().contentEquals("nextPhase")){
 						
 					phase++;
-						
+					/*
 					if(phase1Timer.isRunning()){
 						phase1Timer.stop();
 					
@@ -89,17 +96,20 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 						}else{
 							phase2Timer.restart();
 						}
-					}
+					}*/
 						
 					if(phase == 2){
-						System.out.println("Phase(2): Buying Frostleafs entered,		World("+ world_nr +")");
+						phaseInfo = "Leveling/upgrading Frostleaf";
+						phaseTimer.setDelay(phase2Length);
+						phaseTimer.restart();
 					}
 					else if(phase == 3){
-						System.out.println("Phase(3): Mass leveling/upgrade entered,		World("+ world_nr +")");
-						phase2Timer.stop();
+						phaseInfo = "Mass leveling, buying every ones upgrades";
+								
+						//phase2Timer.stop();
 					}
 					else if(phase == 5){
-						System.out.println("Phase(5): Frostleaf entered,		World("+ world_nr +")");
+						phaseInfo = "Leveling Frostleaf";
 						phase4Timer.stop();
 						if(phase5Timer == null){
 							phase5Timer = new Timer(TimeToMilli(1,10), this);
@@ -110,7 +120,7 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 						}
 					}
 					else if(phase == 6){
-						System.out.println("Phase(6): Samurai and seer entered,		World("+ world_nr +")");
+						phaseInfo = "Leveling Masked Samurai and Forest Seer";
 						phase5Timer.stop();
 						if(phase6Timer == null){
 							phase6Timer = new Timer(TimeToMilli(3,0), this);
@@ -121,7 +131,7 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 						}
 					}
 					else if(phase == 7){
-						System.out.println("Phase(7): Natalia and Mercedes entered,		World("+ world_nr +")");
+						phaseInfo = "Leveling Natalia and Mercedes";
 						phase6Timer.stop();
 						if(phase7Timer == null){
 							phase7Timer = new Timer(TimeToMilli(2,0), this);
@@ -132,7 +142,7 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 						}
 					}
 					else if(phase == 8){
-						System.out.println("Phase(8): TreebeastIvanBrittany again entered,		World("+ world_nr +")");
+						phaseInfo = "Leveling Treebeast, Ivan and Brittany";
 						phase7Timer.stop();
 						if(phase8Timer == null){
 							phase8Timer = new Timer(TimeToMilli(2,0), this);
@@ -143,7 +153,7 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 						}
 					}
 					else if(phase == 9){
-						System.out.println("Phase(7): World Ascention entered,		World("+ world_nr +")");
+						phaseInfo = "Ascending the world";
 						//Time for a new word, stop all phaseTimers
 						phase1Timer.stop();
 						phase2Timer.stop();
@@ -166,23 +176,29 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 				else if(eventArg.getActionCommand().contentEquals("doAction")){
 					
 					if(phase == 0){
-						System.out.println("Phase(0): New world entered,		World("+ world_nr +")");
+						phaseInfo = "Clicking for gold to buy first heroes";
 						//Turn on Progression mode
 						CheckProgressOn();
 						//Initial clicking to get enough gold to buy a hero
 						robert.mouseMove(1382, 600);
 						AutoClick(25,4);
-						
-						if(phase1Timer == null){
+						if(phaseTimer == null){
+							phaseTimer = new Timer(phase1Length, this);
+							phaseTimer.setActionCommand("nextPhase");
+							phaseTimer.start();
+						}else{
+							phaseTimer.restart();
+						}
+					/*	if(phase1Timer == null){
 							phase1Timer = new Timer(TimeToMilli(3,30), this);
 							phase1Timer.setActionCommand("nextPhase");
 							phase1Timer.start();
 						}else{
 								phase1Timer.restart();
-						}
-							System.out.println("Phase: First run(1) entered,		World("+ world_nr +")");
-							phase = 1;
-						}
+						}*/
+						phaseInfo = "Hireing all the heroes";
+						phase = 1;
+					}
 					else if(phase == 1){
 						//Hire/level up the 3 most expensive heroes available until phaseTimer1 fires
 						BuyBottom3();
@@ -195,7 +211,7 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 					else if(phase == 3){
 						QuickLevelUp();
 						phase =  4;
-						System.out.println("Phase(4): TreeBeast, Ivan and Brittany entered,		World("+ world_nr +")");
+						phaseInfo = "Leveling TreeBeast, Ivan and Brittany";
 						if(phase4Timer == null){
 							phase4Timer = new Timer(TimeToMilli(10,0), this);
 							phase4Timer.setActionCommand("nextPhase");
@@ -229,7 +245,7 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 					}
 					else{
 						//unrecognized phase, you should never end up in here outside of testing
-						getTimeSpent();
+						getTimeSpentTotal();
 						sleepThread(4000);
 					}
 				}
@@ -881,11 +897,12 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 			sleepThread(1000);
 			robert.mouseMove(848, 718);
 			Click();
-			
+			startTimeThisWorld = System.currentTimeMillis();
+			++world_nr;
 			sleepThread(5000);
 			System.out.println("\n World ascended, starting over\n" + "Current World is numberr:" + world_nr);
 			
-			++world_nr;
+			
 		}
 
 		public void QuickLevelUp() throws InterruptedException{
@@ -1165,11 +1182,98 @@ public class BotThread extends SwingWorker<Integer, Integer> implements ActionLi
 			performActionTimer.stop();
 		}
 		
-		public String getTimeSpent(){
-			long timeSpent =  System.currentTimeMillis() - startTime;
+		public String getTimeSpentTotal(){
+			long timeSpent =  System.currentTimeMillis() - startTimeTotal;
 			//System.out.println("been working for: " + milliToString(timeSpent));
 			return milliToString(timeSpent);
 		}
+		
+		public String getTimeSpentCurrent(){
+			long timeSpent =  System.currentTimeMillis() - startTimeThisWorld;
+			//System.out.println("been working for: " + milliToString(timeSpent));
+			return milliToString(timeSpent);
+		}
+		
+	//TODO:get actual progress	
+		public void updateProgress()
+		{
+			//legit as shit
+			this.setProgress(55);
+			
+			
+			phaseProgress = 30;
+		}
 
+		public void cancelBot() {
+			
+			if(phase1Timer != null){
+				phase1Timer.stop();
+			}
+			if(phase2Timer != null){
+				phase2Timer.stop();
+			}
+			if(phase4Timer != null){
+				phase4Timer.stop();
+			}
+			if(phase5Timer != null){
+				phase5Timer.stop();
+			}
+			if(phase6Timer != null){
+				phase6Timer.stop();
+			}
+			if(phase7Timer != null){
+				phase7Timer.stop();
+			}
+			if(phase8Timer != null){
+				phase8Timer.stop();
+			}
+			if(sleepTimer != null){
+				sleepTimer.stop();
+			}
+			if(performActionTimer != null){
+				performActionTimer.stop();
+			}
+			if(ProgressCheckTimer != null){
+				ProgressCheckTimer.stop();
+			}
+
+			isStopped = true;
+		}
+		public void startBot() throws AWTException{
+
+			runClicks = true;
+			phase = 99;
+			phaseProgress = 0;
+			phaseInfo = "Testing phase";
+			world_nr = 1;
+			nr_of_phases = 9;
+			
+			if(performActionTimer == null){
+				performActionTimer = new Timer(500, this);	
+				performActionTimer.setActionCommand("doAction");
+				performActionTimer.start();
+			}else{
+				performActionTimer.restart();
+			}
+			
+			if(ProgressCheckTimer == null){
+				ProgressCheckTimer = new Timer(TimeToMilli(2,30), this);
+				ProgressCheckTimer.setActionCommand("checkProgress");
+				ProgressCheckTimer.start();	
+			}else{
+				ProgressCheckTimer.restart();
+			}
+			
+			if(robert == null){
+				robert = new Robot();
+			}
+			
+			phase1Length = TimeToMilli(3,30);
+			phase2Length = TimeToMilli(2,30);
+			startTimeTotal = System.currentTimeMillis();
+			startTimeThisWorld = System.currentTimeMillis();
+			
+			isStopped = false;
+		}
 	}
 
